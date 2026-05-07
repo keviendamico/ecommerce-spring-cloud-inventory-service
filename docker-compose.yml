@@ -1,0 +1,14 @@
+services:
+  postgres:
+    container_name: inventory-service-db
+    image: postgres:14.22
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: inventory_db
+    volumes:
+      - inventory-service-db-data:/var/lib/postgresql/data
+volumes:
+  inventory-service-db-data:

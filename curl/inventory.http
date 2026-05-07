@@ -1,0 +1,22 @@
+### Get inventory by product ID
+GET {{host}}/api/inventory/1
+
+### Create inventory entry
+POST {{host}}/api/inventory
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 100
+}
+
+### Decrease inventory quantity
+PATCH {{host}}/api/inventory/1/decrease
+Content-Type: application/json
+
+{
+  "quantity": 10
+}
+
+### Delete inventory entry
+DELETE {{host}}/api/inventory/1
