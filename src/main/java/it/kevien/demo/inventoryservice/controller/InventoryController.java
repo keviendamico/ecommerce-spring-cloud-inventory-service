@@ -37,14 +37,14 @@ public class InventoryController {
     }
 
     @PatchMapping("/{productId}/decrease")
-    public ResponseEntity<InventoryResponse> decreaseInventory(@PathVariable Long productId, @RequestBody InventoryAdjustmentRequest inventoryDecreaseRequest) {
-        InventoryResponse inventoryResponse = inventoryService.decreaseInventory(productId, inventoryDecreaseRequest.quantity());
+    public ResponseEntity<InventoryResponse> decreaseInventory(@PathVariable Long productId, @RequestBody InventoryAdjustmentRequest inventoryAdjustmentRequest) {
+        InventoryResponse inventoryResponse = inventoryService.decreaseInventory(productId, inventoryAdjustmentRequest.quantity());
         return ResponseEntity.ok(inventoryResponse);
     }
 
     @PatchMapping("/{productId}/increase")
-    public ResponseEntity<InventoryResponse> increaseInventory(@PathVariable Long productId, @RequestBody InventoryAdjustmentRequest inventoryDecreaseRequest) {
-        InventoryResponse inventoryResponse = inventoryService.increaseInventory(productId, inventoryDecreaseRequest.quantity());
+    public ResponseEntity<InventoryResponse> increaseInventory(@PathVariable Long productId, @RequestBody InventoryAdjustmentRequest inventoryAdjustmentRequest) {
+        InventoryResponse inventoryResponse = inventoryService.increaseInventory(productId, inventoryAdjustmentRequest.quantity());
         return ResponseEntity.ok(inventoryResponse);
     }
 
