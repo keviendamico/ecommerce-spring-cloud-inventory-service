@@ -43,6 +43,17 @@ public class InventoryService {
         throw new InventoryNotFoundException("Inventory not found for product ID: " + productId);
     }
 
+    public InventoryResponse increaseInventory(Long productId, Integer quantity) {
+        Optional<Inventory> opt = inventoryRepository.findByProductId(productId);
+        if (opt.isPresent()) {
+            Inventory inventory = opt.get();
+            inventory.setQuantity(inventory.getQuantity() + quantity);
+            inventoryRepository.save(inventory);
+            return inventoryMapper.toDto(inventory);
+        }
+        throw new InventoryNotFoundException("Inventory not found for product ID: " + productId);
+    }
+
     public InventoryResponse addInventory(InventoryRequest inventoryRequest) {
         Inventory inventory = inventoryMapper.toEntity(inventoryRequest);
         inventoryRepository.save(inventory);

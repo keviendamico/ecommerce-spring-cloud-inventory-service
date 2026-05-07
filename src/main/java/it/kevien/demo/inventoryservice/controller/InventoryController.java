@@ -1,6 +1,6 @@
 package it.kevien.demo.inventoryservice.controller;
 
-import it.kevien.demo.inventoryservice.model.dto.InventoryDecreaseRequest;
+import it.kevien.demo.inventoryservice.model.dto.InventoryAdjustmentRequest;
 import it.kevien.demo.inventoryservice.model.dto.InventoryRequest;
 import it.kevien.demo.inventoryservice.model.dto.InventoryResponse;
 import it.kevien.demo.inventoryservice.service.InventoryService;
@@ -37,8 +37,14 @@ public class InventoryController {
     }
 
     @PatchMapping("/{productId}/decrease")
-    public ResponseEntity<InventoryResponse> decreaseInventory(@PathVariable Long productId, @RequestBody InventoryDecreaseRequest inventoryDecreaseRequest) {
+    public ResponseEntity<InventoryResponse> decreaseInventory(@PathVariable Long productId, @RequestBody InventoryAdjustmentRequest inventoryDecreaseRequest) {
         InventoryResponse inventoryResponse = inventoryService.decreaseInventory(productId, inventoryDecreaseRequest.quantity());
+        return ResponseEntity.ok(inventoryResponse);
+    }
+
+    @PatchMapping("/{productId}/increase")
+    public ResponseEntity<InventoryResponse> increaseInventory(@PathVariable Long productId, @RequestBody InventoryAdjustmentRequest inventoryDecreaseRequest) {
+        InventoryResponse inventoryResponse = inventoryService.increaseInventory(productId, inventoryDecreaseRequest.quantity());
         return ResponseEntity.ok(inventoryResponse);
     }
 
