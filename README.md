@@ -15,6 +15,7 @@ It registers itself with Eureka on startup and reads its configuration from the 
 | `GET` | `/api/inventory/{productId}` | Get stock for a product |
 | `POST` | `/api/inventory` | Create a new inventory entry |
 | `PATCH` | `/api/inventory/{productId}/decrease` | Decrease stock by a given quantity |
+| `PATCH` | `/api/inventory/{productId}/increase` | Increase stock by a given quantity |
 | `DELETE` | `/api/inventory/{productId}` | Delete an inventory entry |
 
 ## Key Configuration
